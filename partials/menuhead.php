@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>J&F</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -27,7 +14,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-vote-yea"></i>
       </div>
@@ -40,7 +27,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Principal</span></a>
       </li>
@@ -54,21 +41,21 @@
       </div>
         <!-- Nav Item - Crear -->
         <li class="nav-item">
-          <a class="nav-link" href="crear2.html">
+          <a class="nav-link" href="crear2.php">
             <i class="fas fa-poll"></i>
             <span>Crear</span></a>
         </li>
   
         <!-- Nav Item - Buscar -->
         <li class="nav-item">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="tables.php">
             <i class="fa fa-search"></i>
             <span>Buscar</span></a>
         </li>
 
       <!-- Nav Item - Mis encuestas -->
       <li class="nav-item">
-        <a class="nav-link" href="misencuestas.html">
+        <a class="nav-link" href="misencuestas.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Mis encuestas</span></a>
       </li>
@@ -262,72 +249,3 @@
 
         </nav>
         <!-- End of Topbar -->
-   <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card w-80 h-100">
-                    <div class="card-header bg-gradient-primary text-white text-center">
-                        <h3>Opcion / Respuesta 1</h3>
-                    </div> 
-                    <div class="card-body">
-                        <form action="">
-                            <div class="form-group ">
-                             
-                                <input type="text" class="form-control" placeholder="Primera respuesta o opción ">  
-                                 
-                            </div> 
-                            <div class="form-group"> 
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                      <label class="custom-file-label" for="inputGroupFile02">Cargar Imagen</label>
-                                    </div>
-                              
-                               
-                            </div>  
-
-                            <div class="form-group ">
-                             <label>Color para representar</label>
-                                <input type="color" name="" id="">
-                            </div>   
-                  
-
-
-
-
-                            
-
-                             
-                            
-                              
-                              
-
-                            <div class="form-group"> 
-                                <a class="btn btn-primary text-white btn-block" href="crear4.html">Siguiente</a>
-                            </div>
-                        </form> 
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="crear2.html">Datos tecnicos</a></li>
-                              <li class="breadcrumb-item"><a href="crear3.html">Primera Opcion</a></li>
-                              <li class="breadcrumb-item active"><a href="crear4.html">Segunda Opcion</a></li>
-                            </ol>
-                          </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-  </body> 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
- 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-</html>
-
