@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <?php require 'partials/menuhead.php'?>
 
-  <title>J&F</title>
-
-  <?php require 'partials/menuhead.php'?> 
    <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -20,35 +10,42 @@
                         <h3>Crear encuesta</h3>
                     </div> 
                     <div class="card-body">
-                        <form action="">
+
+                        <form method="POST" action="logica/guardar.php?accion=INS" autocomplete="off"> 
+                       
                             <div class="form-group ">
-                             
-                                <input type="text" class="form-control" placeholder="Nombre de la encuesta">  
-                            </div> 
+                            <label for="nombre">Nombre <span style="color:red">*</span> </label>
+                                <input required="" name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre de la encuesta">  
+                            </div>  
                             <div class="form-group"> 
 
-                              
-                                <textarea class="mt-3 form-control" name="" id="" cols="15" rows="3" placeholder="Descripcion de encuesta"></textarea> 
+                            <label for="descripcion">Descripción <span style="color:red">*</span> </label>
+                            <textarea  name="descripcion" class=" form-control"   cols="15" rows="3" placeholder="Ingrese la descripción de encuesta"></textarea> 
                             </div>  
-
+                            
                             <div class="form-group ">
-                             
-                                <input type="text" class="form-control" placeholder="Cuestionante">  
+                            <label for="cuestionante">Cuestionante <span style="color:red">*</span></label>
+                                <input required=""  name="cuestionante" type="text" class="form-control" placeholder="Ingrese la cuestionante que planea responder la encuesta">  
                             </div>   
                             <div class="container text-center mt-2 mb-3">
-                                <label> Cantidad de votantes</label> 
-                                <input type="number" max="30" min="10">
+                                <label> Cantidad de votantes </label> 
+                                <input required="" name="votantes" type="number" value="1" max="30" min="1" > <span style="color:red">*</span>
     
                             </div>
 
 
 
-
+<style type="text/css">
+    #contraseña{
+        display: none;
+    }
+</style>
                             
 
                             <div class="container text-center "> 
 
-                                <Label>Tipo de encuesta</Label>
+                                <Label>Tipo de encuesta <span style="color:red">*</span></Label> 
+                                
                                
                                 <div class="container mt-1">
                             <div class="row">
@@ -57,52 +54,79 @@
                             <div class="radio">
                                 <label> 
                                     
-                                  <input class="ml-5" type="radio" value="">
-                                 Publica
+                                  <input required="" name="privacidad" class="ml-5" type="radio" value="no" onClick="pass(1)">
+                                 Pública
                                 </label></div> 
                               </div>
 
                               <div class="d-inline ml-5">
                               <div class="checkbox ">
                                 <label>
-                                 <input type="radio" value="">
+                                 <input required="" name="privacidad" type="radio" value="si" onClick="pass(0)">
                                   Privada
-                                </label></div></div></div>
-                              </div> 
+                                </label></div></div> 
 
-                             
+                                <div class="row"> 
+<div class="col-12"><div class="container text-center "> 
+                              <div class="form-group container ml-4 mt-3" id="contraseña">
+                            <label for="Contraseña">Contraseña<span style="color:red">*</span> </label>
+                                <input  name="contraseña"  type="text" class="form-control" placeholder="Contraseña que tendra la encuesta">  
+                            </div>  </div> </div>
+                              </div>  </div></div>
+
+                              <script>
+                                  function pass(x){
+                                      if (x==0){
+                                          document.getElementById("contraseña").style.display='block';
+                                      }else{
+                                        document.getElementById("contraseña").style.display='none';
+                                      }
+                                      return;
+                                  }
+                              </script>
                             
                               
+        <div class="row">
+            <div class="col-md-12 offset-md-0 mt-3">
+                <div class="card w-100 h-100">
+                    <div class="card-header bg-gradient-primary text-white text-center">
+                        <h3>Opción / Respuesta 1</h3>
+                    </div> </div> </div> </div> 
+
+                    <div class="form-group ">
+                    
+                    <label class="mt-3" for="opcion">Primera Opcion <span style="color:red">*</span></label>
+                             <input required="" name="opcion" type="text" class=" form-control" placeholder="Ingrese la primera Opción">  
+                        
+                           
+                            
+
+                         
+                            <div class="row">
+            <div class="col-md-12 offset-md-0 mt-5">
+                <div class="card w-100 h-100">
+                    <div class="card-header bg-gradient-primary text-white text-center">
+                        <h3>Opción / Respuesta 2</h3>
+                    </div> </div> </div> </div></div>   
+                  
+                    <div class="form-group ">
+                    <label class="mt-3" for="opciond">Segunda Opcion <span style="color:red">*</span></label>
+                             <input required="" name="opciond" type="text" class="form-control" placeholder="Ingrese la segunda Opcion">  
+                         </div> </div> </div> 
                               
 
                             <div class="form-group"> 
                                 
-                                    <a class="btn btn-primary text-white btn-block" href="crear3.php">Siguiente</a>
+                                    <button class="btn btn-primary text-white btn-block"  type="submit">  Crear</button>
                                 
                             </div>
                         </form> 
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="crear2.php">Datos tecnicos</a></li>
-                              <li class="breadcrumb-item"><a href="crear3.php">Primera Opcion</a></li>
-                              <li class="breadcrumb-item active"><a href="crear4.php">Segunda Opcion</a></li>
-                            </ol>
-                          </nav>
+                       
                     </div>
                 </div>
             </div>
         </div>
     </div>
    
-  </body> 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
- 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-</html>
+    <?php require 'partials/menubot.php'?> 
 

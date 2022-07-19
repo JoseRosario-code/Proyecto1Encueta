@@ -141,7 +141,7 @@ strong {
 small {
   font-size: 80%;
 }
-
+bg-register-image
 sub,
 sup {
   position: relative;
@@ -10803,19 +10803,19 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("https://previews.123rf.com/images/prostoira777/prostoira7771701/prostoira777170100072/70530998-encuesta-en-l%C3%ADnea-lista-de-verificaci%C3%B3n-icono-del-cuestionario-pantalla-de-la-computadora-concepto-de-neg.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background: url("https://previews.123rf.com/images/prostoira777/prostoira7771701/prostoira777170100072/70530998-encuesta-en-l%C3%ADnea-lista-de-verificaci%C3%B3n-icono-del-cuestionario-pantalla-de-la-computadora-concepto-de-neg.jpg");
   background-position: center;
   background-size: cover;
-}
+} 
 
 .bg-password-image {
-  background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
+  background: url("https://previews.123rf.com/images/prostoira777/prostoira7771701/prostoira777170100072/70530998-encuesta-en-l%C3%ADnea-lista-de-verificaci%C3%B3n-icono-del-cuestionario-pantalla-de-la-computadora-concepto-de-neg.jpg");
   background-position: center;
   background-size: cover;
 }
