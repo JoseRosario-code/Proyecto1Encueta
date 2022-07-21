@@ -17,59 +17,107 @@ if (isset($_GET['id'])) {
 }
 
 if ($i == 'INS') {
-    $msj = '';
-    $nombre         = $_POST['nombre'];
-    $descripcion      = $_POST['descripcion'];
-    $cuestionante     = $_POST['cuestionante'];
-    $votantes        = $_POST['votantes'];
-    $privacidad   = $_POST['privacidad'];  
-    $opcion  = $_POST['opcion']; 
-    $opciond  = $_POST['opciond'];  
-    $colorp  = $_POST['colorp']; 
-    $colord  = $_POST['colord'];  
-    $imagenp = addslashes(file_get_contents($_FILES['imagenp']['tmp_name'])); 
-    $imagend = addslashes(file_get_contents($_FILES['imagend']['tmp_name']));
-    $contra  = $_POST['contraseña'];
-  
-$sql="INSERT INTO `detallencuesta`
-(`nombre`, 
-`id_usuario`, 
-`descripcion`, 
-`cuestionante`, 
-`votosmax`, 
-`privacidad`,
-`primeraopcion`,
-`colorp`,
-`imagenp`,
-`segundaopcion`,
-`colord`,
-`imagend`,
-`estado`,
-`contraseña`) VALUES 
-('$nombre', 
-'$usuario',
-'$descripcion',
-'$cuestionante',
-'$votantes',
-'$privacidad',
-'$opcion',
-'$colorp',
-'$imagenp',
-'$opciond',
-'$colord',
-'$imagend',
-'A',
-'$contra')"; }
-    
-if ($mysqli->query($sql)) {
-     $msj ='successins';
-} else {
-    $msj ='errorins';
+
+$_SESSION['nombreEnc'] = $_POST['nombre']; 
+$_SESSION['descripcionEnc']     = $_POST['descripcion'];
+$_SESSION['cuestionanteEnc']     = $_POST['cuestionante'];
+$_SESSION['votantesEnc']     = $_POST['votantes']; 
+$_SESSION['privacidadEnc']     = $_POST['privacidad'];
+if (isset($_POST['contraseña'])
+){
+    $_SESSION['contrasenaEnc']     = $_POST['contraseña'];
 }
-    //echo("Descripcion de Error: " .mysqli_error($mysqli));
-    header("Location: ../misencuestas.php?s=".$msj);  
 
 
+if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc'])  ){
+header("location: ../crear3.php");
+
+return;
+}}
+if ($i == 'INS2') {
+$_SESSION['opcionEnc']     = $_POST['opcion'];
+
+if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) 
+&& isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc']) && isset($_SESSION['opcionEnc'])  ){
+    header("location: ../crear4.php"); }
+
+}
+if ($i == 'INS3') {
+    $_SESSION['opciondEnc']     = $_POST['opciond'];
+    
+    if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) 
+    && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc']) && isset($_SESSION['opcionEnc']) && isset($_SESSION['opciondEnc'])  ){
+       
+       $msj = '';
+       $nombre         = $_SESSION['nombreEnc'];
+       $descripcion      = $_SESSION['descripcionEnc'];
+       $cuestionante     = $_SESSION['cuestionanteEnc'];
+       $votantes        = $_SESSION['votantesEnc'];
+       $privacidad   = $_SESSION['privacidadEnc'];  
+       $opcion  = $_SESSION['opcionEnc']; 
+       $opciond  = $_SESSION['opciondEnc'];  
+         
+    //    $imagenp = addslashes(file_get_contents($_FILES['imagenp']['tmp_name'])); 
+    //    $imagend = addslashes(file_get_contents($_FILES['imagend']['tmp_name']));
+       $contra  = $$_SESSION['contraseñaEnc'];
+     
+   $sql="INSERT INTO `detallencuesta`
+   (`nombre`, 
+   `id_usuario`, 
+   `descripcion`, 
+   `cuestionante`, 
+   `votosmax`, 
+   `privacidad`,
+   `primeraopcion`,
+   `colorp`,
+   `imagenp`,
+   `segundaopcion`,
+   `colord`,
+   `imagend`,
+   `estado`,
+   `contraseña`) VALUES 
+   ('$nombre', 
+   '$usuario',
+   '$descripcion',
+   '$cuestionante',
+   '$votantes',
+   '$privacidad',
+   '$opcion',
+   '$colorp',
+   '$imagenp',
+   '$opciond',
+   '$colord',
+   '$imagend',
+   'A',
+   '$contra')"; 
+       
+   if ($mysqli->query($sql)) {
+        $msj ='successins'; 
+
+
+   } else {
+       $msj ='errorins';
+   }
+       //echo("Descripcion de Error: " .mysqli_error($mysqli)); 
+       unset ($_SESSION['nombreEnc']) ; 
+unset($_SESSION['descripcionEnc'] )   ;
+unset($_SESSION['cuestionanteEnc']   )  ;
+unset($_SESSION['votantesEnc'] )  ; 
+unset($_SESSION['privacidadEnc'] )   ;
+unset($_SESSION['opcionEnc'] )    ;
+unset($_SESSION['opciondEnc'] )   ; 
+
+       header("Location: ../misencuestas.php?s=".$msj);  
+   
+}
+}
+// if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc'])){
+//     header("location: ../crear4.php");
+// }else{
+//     echo "error";
+// }
+
+   
 
 if ($i == 'VOTE') { 
     $encuesta =$_POST['codigo'];

@@ -15,21 +15,28 @@
                        
                             <div class="form-group ">
                             <label for="nombre">Nombre <span style="color:red">*</span> </label>
-                                <input required="" name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre de la encuesta">  
+                                <input required="" name="nombre" type="text" class="form-control" <?php if (isset($_SESSION['nombreEnc'])
+                                ){ echo " value= '".$_SESSION['nombreEnc']."'";};?> placeholder="Ingrese el nombre de la encuesta">  
                             </div>  
                             <div class="form-group"> 
 
                             <label for="descripcion">Descripción <span style="color:red">*</span> </label>
-                            <textarea  name="descripcion" class=" form-control"   cols="15" rows="3" placeholder="Ingrese la descripción de encuesta"></textarea> 
+                            <textarea  name="descripcion" class=" form-control"   cols="15" rows="3" placeholder="Ingrese la descripción de encuesta"><?php if (isset($_SESSION['descripcionEnc'])
+                                ){ echo $_SESSION['descripcionEnc'];}?></textarea> 
                             </div>  
-                            
+                             
+                           
                             <div class="form-group ">
                             <label for="cuestionante">Cuestionante <span style="color:red">*</span></label>
-                                <input required=""  name="cuestionante" type="text" class="form-control" placeholder="Ingrese la cuestionante que planea responder la encuesta">  
+                                <input required=""   name="cuestionante"  <?php if (isset($_SESSION['cuestionanteEnc'])
+                                ){ echo " value= '".$_SESSION['cuestionanteEnc']."'";};?> type="text" class="form-control" placeholder="Ingrese la cuestionante que planea responder la encuesta">  
                             </div>   
                             <div class="container text-center mt-2 mb-3">
                                 <label> Cantidad de votantes </label> 
-                                <input required="" name="votantes" type="number" value="1" max="30" min="1" > <span style="color:red">*</span>
+                                <input required="" name="votantes" type="number" <?php if (isset($_SESSION['cuestionanteEnc'])
+                                ){ echo " value= '".$_SESSION['votantesEnc']."'";}else{
+                                    echo 'value= "1"';
+                                };?> max="30" min="1" > <span style="color:red">*</span>
     
                             </div>
 
@@ -86,41 +93,20 @@
                               </script>
                             
                               
-        <div class="row">
-            <div class="col-md-12 offset-md-0 mt-3">
-                <div class="card w-100 h-100">
-                    <div class="card-header bg-gradient-primary text-white text-center">
-                        <h3>Opción / Respuesta 1</h3>
-                    </div> </div> </div> </div> 
-
-                    <div class="form-group ">
-                    
-                    <label class="mt-3" for="opcion">Primera Opcion <span style="color:red">*</span></label>
-                             <input required="" name="opcion" type="text" class=" form-control" placeholder="Ingrese la primera Opción">  
-                        
-                           
-                            
-
-                         
-                            <div class="row">
-            <div class="col-md-12 offset-md-0 mt-5">
-                <div class="card w-100 h-100">
-                    <div class="card-header bg-gradient-primary text-white text-center">
-                        <h3>Opción / Respuesta 2</h3>
-                    </div> </div> </div> </div></div>   
-                  
-                    <div class="form-group ">
-                    <label class="mt-3" for="opciond">Segunda Opcion <span style="color:red">*</span></label>
-                             <input required="" name="opciond" type="text" class="form-control" placeholder="Ingrese la segunda Opcion">  
-                         </div> </div> </div> 
-                              
-
+       
                             <div class="form-group"> 
                                 
                                     <button class="btn btn-primary text-white btn-block"  type="submit">  Crear</button>
                                 
                             </div>
                         </form> 
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item active"aria-current="page">Datos tecnicos</li>
+                              <li class="breadcrumb-item"><a href="crear3.php">Primera Opcion</a></li>
+                              <li class="breadcrumb-item"><a href="crear4.php">Segunda Opcion</a></li>
+                            </ol>
+                          </nav>
                        
                     </div>
                 </div>

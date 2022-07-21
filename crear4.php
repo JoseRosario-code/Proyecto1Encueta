@@ -18,14 +18,13 @@
             <div class="col-md-6 offset-md-3">
                 <div class="card w-80 h-100">
                     <div class="card-header bg-gradient-primary text-white text-center">
-                        <h3>Opcion / Respuesta 1</h3>
+                        <h3>Opcion / Respuesta 2</h3>
                     </div> 
                     <div class="card-body">
-                    <form method="POST" action="logica/guardar.php?accion=INS2" autocomplete="off"> 
+                    <form method="POST" action="logica/guardar.php?accion=INS3" autocomplete="off"> 
                             <div class="form-group ">
                              
-                            <input required="" name="opcion" type="text" class=" form-control" <?php if (isset($_SESSION['opcionEnc'])
-                                ){ echo " value= '".$_SESSION['opcionEnc']."'";};?> placeholder="Ingrese la primera Opción">   
+                            <input required="" name="opciond" type="text" class=" form-control" placeholder="Ingrese la segunda Opción"> 
                                  
                             </div> 
                             <div class="form-group"> 
@@ -53,15 +52,15 @@
                               
                               
 
-                              <div class="form-group"> 
-                              <button class="btn btn-primary text-white btn-block"  type="submit">  Siguiente</button>
+                             <div class="form-group"> 
+                             <button class="btn btn-primary text-white btn-block"  type="submit">  Crear</button>
                             </div>
                         </form> 
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="crear2.php">Datos tecnicos</a></li>
-                              <li class="breadcrumb-item active">Primera Opcion</li>
-                             
+                              <li class="breadcrumb-item"><a href="crear3.php">Primera Opcion</a></li>
+                              <li class="breadcrumb-item active">Segunda Opcion</li>
                             </ol>
                           </nav>
                     </div>
