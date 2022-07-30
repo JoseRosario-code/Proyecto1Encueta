@@ -2,6 +2,8 @@
 include('conexion.php'); 
 session_start(); 
 
+    // rest of your code...
+
 $usuario=  $_SESSION['id'];
 
 // INS | UDT | DLT
@@ -23,10 +25,9 @@ $_SESSION['descripcionEnc']     = $_POST['descripcion'];
 $_SESSION['cuestionanteEnc']     = $_POST['cuestionante'];
 $_SESSION['votantesEnc']     = $_POST['votantes']; 
 $_SESSION['privacidadEnc']     = $_POST['privacidad'];
-if (isset($_POST['contraseña'])
-){
-    $_SESSION['contrasenaEnc']     = $_POST['contraseña'];
-}
+
+    $_SESSION['contrasena']     = $_POST['contraseña']; 
+
 
 
 if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc'])  ){
@@ -37,13 +38,29 @@ return;
 if ($i == 'INS2') {
 $_SESSION['opcionEnc']     = $_POST['opcion'];
 
+$_SESSION['tipoarchivo']=$_FILES['imagenp']['type'];
+$_SESSION['nombrearchivo']=$_FILES['imagenp']['name'];
+$tamanoarchivo=$_FILES['imagenp']['size']; 
+$imagenp=fopen($_FILES['imagenp']['tmp_name'],'r'); 
+$binariosimagen=fread($imagenp,$tamanoarchivo); 
+$_SESSION['binarios']=mysqli_escape_string($mysqli, $binariosimagen);
+
+
 if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) 
 && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc']) && isset($_SESSION['opcionEnc'])  ){
+    
     header("location: ../crear4.php"); }
 
 }
 if ($i == 'INS3') {
     $_SESSION['opciondEnc']     = $_POST['opciond'];
+
+    $_SESSION['tipoarchivod']=$_FILES['imagend']['type'];
+$_SESSION['nombrearchivod']=$_FILES['imagend']['name'];
+$tamanoarchivo=$_FILES['imagend']['size']; 
+$imagend=fopen($_FILES['imagend']['tmp_name'],'r'); 
+$binariosd=fread($imagend,$tamanoarchivo); 
+$_SESSION['binariosd']=mysqli_escape_string($mysqli, $binariosd);
     
     if (isset($_SESSION['nombreEnc']) && isset($_SESSION['descripcionEnc']) && isset($_SESSION['cuestionanteEnc']) 
     && isset($_SESSION['votantesEnc']) && isset($_SESSION['privacidadEnc']) && isset($_SESSION['opcionEnc']) && isset($_SESSION['opciondEnc'])  ){
@@ -54,12 +71,17 @@ if ($i == 'INS3') {
        $cuestionante     = $_SESSION['cuestionanteEnc'];
        $votantes        = $_SESSION['votantesEnc'];
        $privacidad   = $_SESSION['privacidadEnc'];  
+       $tipoimagenp = $_SESSION['tipoarchivo']   ;
+       $imagenp = $_SESSION['binarios'];
        $opcion  = $_SESSION['opcionEnc']; 
-       $opciond  = $_SESSION['opciondEnc'];  
+       $opciond  = $_SESSION['opciondEnc'];
+       $imagend = $_SESSION['binariosd']   ;  
+       $tipoimagend = $_SESSION['tipoarchivod']   ;
+       $contrasena = $_SESSION['contrasena']   ;
          
     //    $imagenp = addslashes(file_get_contents($_FILES['imagenp']['tmp_name'])); 
     //    $imagend = addslashes(file_get_contents($_FILES['imagend']['tmp_name']));
-       $contra  = $$_SESSION['contraseñaEnc'];
+    //    $contra  = $_SESSION['contraseñaEnc'];
      
    $sql="INSERT INTO `detallencuesta`
    (`nombre`, 
@@ -69,13 +91,13 @@ if ($i == 'INS3') {
    `votosmax`, 
    `privacidad`,
    `primeraopcion`,
-   `colorp`,
    `imagenp`,
-   `segundaopcion`,
-   `colord`,
+   `tipoimagenp`,
    `imagend`,
-   `estado`,
-   `contraseña`) VALUES 
+   `tipoimagend`,
+   `segundaopcion`,
+   `estado`, 
+   `contrasenaenc`) VALUES 
    ('$nombre', 
    '$usuario',
    '$descripcion',
@@ -83,13 +105,13 @@ if ($i == 'INS3') {
    '$votantes',
    '$privacidad',
    '$opcion',
-   '$colorp',
    '$imagenp',
-   '$opciond',
-   '$colord',
+   '$tipoimagenp',
    '$imagend',
+   '$tipoimagend',
+   '$opciond',
    'A',
-   '$contra')"; 
+   SHA1('$contrasena'))"; 
        
    if ($mysqli->query($sql)) {
         $msj ='successins'; 
@@ -98,7 +120,7 @@ if ($i == 'INS3') {
    } else {
        $msj ='errorins';
    }
-       //echo("Descripcion de Error: " .mysqli_error($mysqli)); 
+       echo("Descripcion de Error: " .mysqli_error($mysqli)); 
        unset ($_SESSION['nombreEnc']) ; 
 unset($_SESSION['descripcionEnc'] )   ;
 unset($_SESSION['cuestionanteEnc']   )  ;
@@ -117,7 +139,20 @@ unset($_SESSION['opciondEnc'] )   ;
 //     echo "error";
 // }
 
-   
+if ($i == 'pass') {
+    $codigo = $_POST['codigo'];
+    $contrasena = $_POST['password'];
+    $sql= "SELECT * FROM `detallencuesta` WHERE id_detalle = $codigo";
+    $result=$mysqli->query($sql); 
+    $row = $result->fetch_assoc(); 
+    $contrabd=$row['contrasenaenc'];
+    $pass_c = sha1($contrasena);
+    if ($pass_c == $contrabd){
+        header("Location: ../encuesta.php?id=".$codigo);
+    }else{
+        header("Location: ../encuesta.php?id=".$codigo."&password=2");
+ }}
+
 
 if ($i == 'VOTE') { 
     $encuesta =$_POST['codigo'];

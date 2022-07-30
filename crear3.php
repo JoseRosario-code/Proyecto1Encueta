@@ -21,7 +21,7 @@
                         <h3>Opcion / Respuesta 1</h3>
                     </div> 
                     <div class="card-body">
-                    <form method="POST" action="logica/guardar.php?accion=INS2" autocomplete="off"> 
+                    <form method="POST" action="logica/guardar.php?accion=INS2" enctype="multipart/form-data" autocomplete="off"> 
                             <div class="form-group ">
                              
                             <input required="" name="opcion" type="text" class=" form-control" <?php if (isset($_SESSION['opcionEnc'])
@@ -29,14 +29,14 @@
                                  
                             </div> 
                             <div class="form-group"> 
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                      <label class="custom-file-label" for="inputGroupFile02">Cargar Imagen</label>
-                                    </div>
+                               
+                                <div class="custom-file">
+    <input type="file" name="imagenp" accept="image/png, .jpeg, .jpg, image/gif" class="custom-file-input" required="" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Cargar Imagen</label>
+  </div>
                               
                                
-                            </div>  
+                              </div>  
 
                             <div class="form-group ">
                              <label>Color para representar</label>

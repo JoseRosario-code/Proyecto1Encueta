@@ -77,7 +77,7 @@
 <div class="col-12"><div class="container text-center "> 
                               <div class="form-group container ml-4 mt-3" id="contraseña">
                             <label for="Contraseña">Contraseña<span style="color:red">*</span> </label>
-                                <input  name="contraseña"  type="text" class="form-control" placeholder="Contraseña que tendra la encuesta">  
+                                <input  name="contraseña"  type="password" class="form-control" placeholder="Contraseña que tendra la encuesta">  
                             </div>  </div> </div>
                               </div>  </div></div>
 

@@ -59,7 +59,7 @@ if (!empty($mensaje) and !empty($color)) {
     <script src="./grafico/js/anychart-exports.min.js"></script>
  
     
-</html>
+
 
 <?php 
 
@@ -82,8 +82,47 @@ if (isset($row2['id_encuesta'])){
 
 
 $restante= $row['votosmax'] - $row2['votos']; 
+$privacidad= $row['privacidad']; 
 
 
+if (isset($_GET['id']) and isset($_GET['password'])){
+    
+    echo'  
+    <form action="logica/guardar.php?accion=pass" method="POST"> 
+    <label class="container control-label">Código de encuesta</label>
+    <div class="row">
+    <div class="col-1">
+                           <input type="text" name="codigo" id="codigo" require="" readonly="" class="ml-5 form-control" value="'.$encuesta.'">
+                           <br> </div></div>
+    <div class="row">
+    <div class="col-7 offset-md-2">
+   <div class="card w-100 h-100">
+   <div class="card-header">'.$row['nombre'].'
+   
+   </div>
+   <div class="card-body">
+   <h5 class="card-title success">No tan rapido !! </h5>
+   <h6 class="card-text ">Esta encuesta es privada, por lo tanto solo podras ingresar si el creador te lo ha facilitado !</h5>
+   <div class="card-body">
+   <div class="container">
+   <div class="col-12"><div class="container text-center "> 
+   <div class="form-group container ml-4 mt-3" id="contraseña">
+   <label for="Contraseña">Contraseña<span style="color:red">*</span> </label>
+     <input  name="password" required=""  type="password" class="form-control container col-6" placeholder="Contraseña que tendra la encuesta">  
+     </div></div>
+
+     <div class="row">
+<button  class="container col-6 btn btn-success" type="submit">Solicitar</button></form>
+
+
+
+
+
+
+
+</div></div></div>
+   ';
+} else{
 
 if (isset($_GET['id'])) {
 
@@ -110,8 +149,8 @@ if($row0==NULL){
                         <input type="text" name="codigo" id="codigo" require="" readonly="" class="ml-5 form-control" value="'.$encuesta.'">
                         <br> </div></div>
  <div class="row">
- <div class="col-6 offset-md-3">
-<div class="card w-80 h-100">
+ <div class="col-7 offset-md-2">
+<div class="card w-100 h-100">
 <div class="card-header">'.$row['nombre'].'
 
 </div>
@@ -124,11 +163,30 @@ if($row0==NULL){
 
 <div class="row"> 
 
-<div class="col-5 "><input type="radio" name="opcion" value = "po"> ' .$row['primeraopcion'].'
-</div><div class="col-5"><input type="radio" name="opcion" value = "op"> ' .$row['segundaopcion'].'
+<div class="col-5">
+<div class="card  mb-1" style="max-width: 30rem;">
+
+<div class="card">
+<h4 class="card-title container mt-2 ml-8">'.$row['primeraopcion'].'</h4></div>
+<div class="card-body">
+<img class="container" width="250" height="215" src="data:'.$row['tipoimagen'].';base64,'.base64_encode($row['imagenp']).'">
+<br>
+</div><input class="mb-3" type="radio" name="opcion" value = "po"></div></div>
+
+
+<div class="col-5">
+<div class="card  mb-1" style="max-width: 30rem;">
+
+<div class="card">
+<h4 class="card-title container mt-2 ml-8">'.$row['segundaopcion'].'</h4></div>
+<div class="card-body">
+<img class="container" width="250" height="215" src="data:'.$row['tipoimagend'].';base64,'.base64_encode($row['imagend']).'">
+<br>
+</div><input class="mb-3" type="radio" name="opcion" value = "op"></div>
+
 </div>
 </div>
-</div> </div>
+</div> 
 
 
 <button  class="container btn btn-success" type="submit">Votar</button></form>
@@ -146,7 +204,7 @@ if($row0==NULL){
    
     echo '<h4 class="font-weight-light text-justify container display-5">Usted ya a realizado su voto en esta encuesta, compruebe los resultados haciendo click <a href="encuesta.php?id='.$row['id_detalle'].'&VOTE='.$row0['voto'].'">AQUI</a></h6>';
 }
-}
+}}
 
 
 if(isset($_GET['id']) and isset($_GET['VOTE']) ){ 
